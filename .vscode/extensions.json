@@ -1,7 +1,8 @@
 {
   "recommendations": [
+    "EditorConfig.EditorConfig",
     "vivaxy.vscode-conventional-commits",
-    "ThreadHeap.serverless-ide-vscode",
+    "threadheap.serverless-ide-vscode",
     "exiasr.hadolint",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode"
