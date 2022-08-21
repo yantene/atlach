@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "vivaxy.vscode-conventional-commits",
+    "ThreadHeap.serverless-ide-vscode",
+    "exiasr.hadolint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}
