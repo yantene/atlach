@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: |
+  Atlach the feed push notifier SAM template
+
+# Parameters:
+#   Environment:
+#     Type: String
+#     Default: production
+#     AllowedValues:
+#       - production
+#       - staging
+#     Description: Environment
+
+Globals:
+  Function:
+    Timeout: 3
+    MemorySize: 128
+    Runtime: nodejs16.x
+    Architectures:
+      - x86_64
+
+Resources:
+  HelloIndexFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dest/
+      Handler: controllers/HelloController.index
+      # Policies:
+      #   - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
+      Events:
+        ApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /hello
+            Method: GET
+
+  # SubscriptionsTable:
+  #   Type: AWS::DynamoDB::Table
+  #   Properties:
+  #     AttributeDefinitions:
+  #       - AttributeName: userName
+  #         AttributeType: S
+  #       - AttributeName: uri
+  #         AttributeType: S
+  #     KeySchema:
+  #       - AttributeName: userName
+  #         KeyType: HASH
+  #       - AttributeName: uri
+  #         KeyType: RANGE
+  #     TableName: !Join ["-", ["atlach", "subscriptions", !Ref Environment]]
+  #     BillingMode: PAY_PER_REQUEST # On Demand
