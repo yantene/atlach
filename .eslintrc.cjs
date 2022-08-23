@@ -13,9 +13,10 @@ module.exports = {
   extends: ["airbnb-base", "airbnb-typescript/base", "prettier"],
   plugins: ["@typescript-eslint"],
   ignorePatterns: [
-    "dest/**/*",
     "node_modules/**/*",
+    "dest/**/*",
     "tmp/**/*",
+    "coverage/**/*",
     ".eslintrc.cjs",
   ],
   rules: {
