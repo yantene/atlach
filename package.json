@@ -7,7 +7,7 @@
   "author": "yantene <contact@yantene.net>",
   "type": "module",
   "scripts": {
-    "build": "node ./bin/build.js",
+    "build": "run-s clean type-check transpile",
     "clean": "rimraf ./dest",
     "configure": "aws configure",
     "format": "run-s -c format:*",
@@ -18,10 +18,11 @@
     "lint:eslint": "eslint .",
     "lint:package-json": "prettier-package-json --success --list-different ./package.json",
     "lint:prettier": "prettier --check .",
-    "production:build-and-deploy": "run-s -c rebuild production:deploy",
+    "production:build-and-deploy": "run-s -c build production:deploy",
     "production:deploy": "sam deploy --region ap-northeast-1 --stack-name atlach-production --resolve-s3 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND",
-    "rebuild": "run-s clean build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "transpile": "node ./bin/transpile.js",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@tsconfig/node16-strictest-esm": "^1.0.3",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.102",
+    "@types/jest": "^28.1.7",
     "@types/node": "^18.7.9",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
@@ -40,8 +42,10 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "jest": "^28.1.3",
     "prettier": "^2.7.1",
     "prettier-package-json": "^2.6.4",
+    "ts-jest": "^28.0.8",
     "typescript": "^4.7.4"
   }
 }

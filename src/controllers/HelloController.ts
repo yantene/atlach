@@ -3,11 +3,14 @@ import type {
   Context,
   APIGatewayProxyResultV2,
 } from "aws-lambda";
+import { HelloService } from "../services/HelloService";
 
 export async function index(
   event: APIGatewayProxyEvent,
   context: Context
 ): Promise<APIGatewayProxyResultV2> {
+  const helloService = new HelloService("Sakura");
+
   return {
     statusCode: 200,
     headers: {
@@ -16,6 +19,7 @@ export async function index(
     body: JSON.stringify({
       event,
       context,
+      hello: helloService.hello(),
     }),
   };
 }
