@@ -3,14 +3,14 @@ Transform: AWS::Serverless-2016-10-31
 Description: |
   Atlach the feed push notifier SAM template
 
-# Parameters:
-#   Environment:
-#     Type: String
-#     Default: production
-#     AllowedValues:
-#       - production
-#       - staging
-#     Description: Environment
+Parameters:
+  Environment:
+    Type: String
+    Default: production
+    AllowedValues:
+      - production
+      - staging
+    Description: Environment
 
 Globals:
   Function:
@@ -26,8 +26,8 @@ Resources:
     Properties:
       CodeUri: dest/
       Handler: controllers/HelloController.index
-      # Policies:
-      #   - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
+      Policies:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
       Events:
         ApiEvent:
           Type: HttpApi
@@ -35,18 +35,18 @@ Resources:
             Path: /hello
             Method: GET
 
-  # SubscriptionsTable:
-  #   Type: AWS::DynamoDB::Table
-  #   Properties:
-  #     AttributeDefinitions:
-  #       - AttributeName: userName
-  #         AttributeType: S
-  #       - AttributeName: uri
-  #         AttributeType: S
-  #     KeySchema:
-  #       - AttributeName: userName
-  #         KeyType: HASH
-  #       - AttributeName: uri
-  #         KeyType: RANGE
-  #     TableName: !Join ["-", ["atlach", "subscriptions", !Ref Environment]]
-  #     BillingMode: PAY_PER_REQUEST # On Demand
+  SubscriptionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: userName
+          AttributeType: S
+        - AttributeName: uri
+          AttributeType: S
+      KeySchema:
+        - AttributeName: userName
+          KeyType: HASH
+        - AttributeName: uri
+          KeyType: RANGE
+      TableName: !Join ["-", ["atlach", "subscriptions", !Ref Environment]]
+      BillingMode: PAY_PER_REQUEST # On Demand
