@@ -21,7 +21,7 @@
     "production:build-and-deploy": "run-s -c build production:deploy",
     "production:deploy": "sam deploy --region ap-northeast-1 --stack-name atlach-production --resolve-s3 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "transpile": "node ./bin/transpile.js",
+    "transpile": "ts-node-esm ./bin/transpile.ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -29,7 +29,8 @@
     "esbuild": "^0.15.5",
     "globby": "^13.1.2",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.102",
