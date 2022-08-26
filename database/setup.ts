@@ -1,5 +1,5 @@
 import type { DynamoDB } from "@aws-sdk/client-dynamodb";
-import { schemas } from "./schema";
+import { schemas } from "./schema.js";
 
 export function createTables(client: DynamoDB) {
   Object.entries(schemas).forEach(async ([logicalTableName, properties]) => {

@@ -1,4 +1,4 @@
-import { deleteTables } from "../database/setup";
-import { client } from "../src/infra/dynamoDB/client";
+import { deleteTables } from "../database/setup.js";
+import { client } from "../src/infra/dynamoDB/client.js";
 
 deleteTables(client);

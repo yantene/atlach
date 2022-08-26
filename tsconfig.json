@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
   "compilerOptions": {
+    "target": "es2022",
     "outDir": "./dest" // for JSON Schema error
   },
   "exclude": ["./node_modules", "./dest", "./tmp", "./coverage"]

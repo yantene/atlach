@@ -1,4 +1,4 @@
-import { HelloService } from "./HelloService";
+import { HelloService } from "./HelloService.js";
 
 describe("HelloService", () => {
   test("hello()", () => {

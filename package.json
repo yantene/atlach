@@ -10,8 +10,8 @@
     "build": "run-s clean type-check transpile",
     "clean": "rimraf ./dest",
     "configure": "aws configure",
-    "db:create": "ts-node-esm --experimental-specifier-resolution=node ./bin/createTables.ts",
-    "db:delete": "ts-node-esm --experimental-specifier-resolution=node ./bin/deleteTables.ts",
+    "db:create": "ts-node-esm ./bin/createTables.ts",
+    "db:delete": "ts-node-esm ./bin/deleteTables.ts",
     "format": "run-s -c format:*",
     "format:eslint": "eslint --fix .",
     "format:package-json": "prettier-package-json --success --write ./package.json",
@@ -23,7 +23,7 @@
     "production:build-and-deploy": "run-s -c build production:deploy",
     "production:deploy": "sam deploy --region ap-northeast-1 --stack-name atlach-production --resolve-s3 --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "transpile": "ts-node-esm --experimental-specifier-resolution=node ./bin/transpile.ts",
+    "transpile": "ts-node-esm ./bin/transpile.ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

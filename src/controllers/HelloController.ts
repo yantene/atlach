@@ -3,7 +3,7 @@ import type {
   Context,
   APIGatewayProxyResultV2,
 } from "aws-lambda";
-import { HelloService } from "../services/HelloService";
+import { HelloService } from "../services/HelloService.js";
 
 export async function index(
   event: APIGatewayProxyEvent,

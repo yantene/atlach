@@ -6,7 +6,8 @@ const entryPoints = await globby("./src/{controllers,batch}/**/*.ts");
 await build({
   entryPoints,
   bundle: true,
-  format: "cjs",
+  format: "esm",
+  outExtension: { ".js": ".mjs" },
   outbase: "./src",
   outdir: "./dest",
   platform: "node",
