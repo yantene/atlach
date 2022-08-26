@@ -5,7 +5,7 @@ export class HelloService {
     this.#name = name;
   }
 
-  hello() {
+  hello(): string {
     return `Hello, ${this.#name}`;
   }
 }

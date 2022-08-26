@@ -22,6 +22,17 @@ module.exports = {
   rules: {
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        selector: "variable",
+        format: null,
+        modifiers: ["unused"],
+        leadingUnderscore: "require",
+      },
+    ],
     "import/extensions": ["error", "always", { ignorePackages: true }],
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   },
 };
