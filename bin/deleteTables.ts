@@ -1,4 +1,7 @@
 import { deleteTables } from "../database/setup.js";
 import { client } from "../src/infra/dynamoDB/client.js";
 
-deleteTables(client);
+const logs = await deleteTables(client);
+
+// eslint-disable-next-line no-console
+console.log(logs);

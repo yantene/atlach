@@ -12,6 +12,7 @@
     "configure": "aws configure",
     "db:create": "ts-node-esm ./bin/createTables.ts",
     "db:delete": "ts-node-esm ./bin/deleteTables.ts",
+    "db:list": "ts-node-esm ./bin/listTables.ts",
     "format": "run-s -c format:*",
     "format:eslint": "eslint --fix .",
     "format:package-json": "prettier-package-json --success --write ./package.json",
