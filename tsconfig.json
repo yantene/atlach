@@ -1,6 +1,8 @@
 {
   "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
   "compilerOptions": {
+    "lib": ["es2022"],
+    "module": "es2022",
     "target": "es2022",
     "outDir": "./dest" // for JSON Schema error
   },
