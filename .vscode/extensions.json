@@ -1,10 +1,11 @@
 {
   "recommendations": [
-    "EditorConfig.EditorConfig",
+    "editorconfig.editorconfig",
     "vivaxy.vscode-conventional-commits",
     "threadheap.serverless-ide-vscode",
     "exiasr.hadolint",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "kavod-io.vscode-jest-test-adapter"
   ]
 }

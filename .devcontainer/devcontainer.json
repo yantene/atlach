@@ -4,7 +4,9 @@
   "service": "dev",
   "workspaceFolder": "/workspace",
   "remoteEnv": {
-    "EDITOR": "code --wait"
+    "EDITOR": "code --wait",
+    // For vscode-jest-test-adapter (https://github.com/kavod-io/vscode-jest-test-adapter/issues/126)
+    "NODE_OPTIONS": "--experimental-vm-modules"
   },
   "remoteUser": "devuser",
   "initializeCommand": "${localWorkspaceFolder}/.devcontainer/commands/initialize.sh",
@@ -17,7 +19,8 @@
         "threadheap.serverless-ide-vscode",
         "exiasr.hadolint",
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "kavod-io.vscode-jest-test-adapter"
       ]
     }
   }
