@@ -1,5 +1,6 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
+import type { InitialOptionsTsJest } from "ts-jest/dist/types";
+
+const config: InitialOptionsTsJest = {
   collectCoverage: true,
   collectCoverageFrom: ["<rootDir>/src/**/*.ts"],
   coverageDirectory: "coverage",
@@ -19,3 +20,6 @@ module.exports = {
     "\\.[jt]sx?$": "ts-jest",
   },
 };
+
+// eslint-disable-next-line import/no-default-export
+export default config;
