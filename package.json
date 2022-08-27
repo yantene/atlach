@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.154.0",
+    "@jest/globals": "^29.0.1",
+    "@js-temporal/polyfill": "^0.4.2",
     "@tsconfig/node16-strictest-esm": "^1.0.3",
     "esbuild": "^0.15.5",
     "globby": "^13.1.2",
