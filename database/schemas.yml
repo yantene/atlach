@@ -2,11 +2,11 @@ atlach-subscriptions:
   AttributeDefinitions:
     - AttributeName: userName
       AttributeType: S
-    - AttributeName: uri
+    - AttributeName: name
       AttributeType: S
   KeySchema:
     - AttributeName: userName
       KeyType: HASH
-    - AttributeName: uri
+    - AttributeName: name
       KeyType: RANGE
   BillingMode: PAY_PER_REQUEST
