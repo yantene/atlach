@@ -1,9 +1,29 @@
 import type { CreateTableCommandInput } from "@aws-sdk/client-dynamodb";
-import YAML from "yaml";
-import fs from "fs/promises";
 
-const schemasFile = await fs.readFile("./database/schemas.yml", "utf-8");
-
-export const schemas = YAML.parse(schemasFile) as {
+export const schemas: {
   [logicalTableName: string]: Omit<CreateTableCommandInput, "TableName">;
+} = {
+  "atlach-subscriptions": {
+    AttributeDefinitions: [
+      {
+        AttributeName: "userName",
+        AttributeType: "S",
+      },
+      {
+        AttributeName: "name",
+        AttributeType: "S",
+      },
+    ],
+    KeySchema: [
+      {
+        AttributeName: "userName",
+        KeyType: "HASH",
+      },
+      {
+        AttributeName: "name",
+        KeyType: "RANGE",
+      },
+    ],
+    BillingMode: "PAY_PER_REQUEST",
+  },
 };

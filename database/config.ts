@@ -1,10 +1,33 @@
-import YAML from "yaml";
 import type { DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
-import fs from "fs/promises";
 
-const databaseConfigFile = await fs.readFile("./database/config.yml", "utf-8");
-export const databaseConfig = YAML.parse(databaseConfigFile) as {
+export const databaseConfig: {
   [env: string]: {
     connection: DynamoDBClientConfig;
   };
+} = {
+  production: {
+    connection: {
+      region: "ap-northeast-1",
+    },
+  },
+  test: {
+    connection: {
+      endpoint: "http://scylla:8000",
+      region: "DUMMY",
+      credentials: {
+        accessKeyId: "DUMMY",
+        secretAccessKey: "DUMMY",
+      },
+    },
+  },
+  development: {
+    connection: {
+      endpoint: "http://scylla:8000",
+      region: "DUMMY",
+      credentials: {
+        accessKeyId: "DUMMY",
+        secretAccessKey: "DUMMY",
+      },
+    },
+  },
 };
