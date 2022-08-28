@@ -20,20 +20,7 @@ Globals:
     Architectures:
       - x86_64
 
-Resources:
-  HelloIndexFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: dest/
-      Handler: controllers/HelloController.index
-      Policies:
-        - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
-      Events:
-        ApiEvent:
-          Type: HttpApi
-          Properties:
-            Path: /hello
-            Method: GET
+Resources: {}
 
   SubscriptionsTable:
     Type: AWS::DynamoDB::Table
