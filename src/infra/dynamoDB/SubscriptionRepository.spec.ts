@@ -59,6 +59,17 @@ describe("SubscriptionRepository", () => {
 
       expect(createdSubscription).toStrictEqual(foundSubscription);
     });
+
+    it("should return null when no item matching the condition exists", async () => {
+      const subscriptionRepository = new SubscriptionRepository();
+
+      const foundSubscription = await subscriptionRepository.find(
+        gitHubFeedSubscriptionData.userName,
+        gitHubFeedSubscriptionData.name
+      );
+
+      expect(foundSubscription).toBeNull();
+    });
   });
 
   describe("findAll()", () => {

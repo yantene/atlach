@@ -51,7 +51,7 @@ export class SubscriptionRepository implements SubscriptionRepositoryInterface {
     return result.$metadata.httpStatusCode === 200;
   }
 
-  async find(userName: string, name: string): Promise<Subscription> {
+  async find(userName: string, name: string): Promise<Subscription | null> {
     const output = await this.#client.getItem({
       TableName: this.#tableName,
       Key: {
@@ -59,6 +59,8 @@ export class SubscriptionRepository implements SubscriptionRepositoryInterface {
         name: { S: name },
       },
     });
+
+    if (output.Item == null) return null;
 
     return SubscriptionRepository.toSubscription(output.Item as Item);
   }
