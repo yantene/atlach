@@ -19,8 +19,24 @@ Globals:
     Runtime: nodejs16.x
     Architectures:
       - x86_64
+    Environment:
+      Variables:
+        NODE_ENV: !Ref Environment
 
-Resources: {}
+Resources:
+  SubscriptionsControllerIndexFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: dest/
+      Handler: controllers/subscriptionsController.index
+      Policies:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess
+      Events:
+        ApiEvent:
+          Type: HttpApi
+          Properties:
+            Method: GET
+            Path: /users/{userName}/subscriptions
 
   SubscriptionsTable:
     Type: AWS::DynamoDB::Table
