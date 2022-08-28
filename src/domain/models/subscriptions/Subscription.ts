@@ -1,24 +1,34 @@
-import { BaseModel, BaseModelData } from "../EntityBase.js";
+import { Temporal } from "@js-temporal/polyfill";
 
-export interface SubscriptionData extends BaseModelData {
+export interface SubscriptionData {
   userName: string;
   name: string;
   uri: string;
+
+  createdAt?: Temporal.Instant;
+  updatedAt?: Temporal.Instant;
 }
 
-export class Subscription extends BaseModel {
+export class Subscription {
   #userName: string;
 
   #name: string;
 
   #uri: string;
 
-  constructor(data: SubscriptionData) {
-    super(data);
+  #createdAt: Temporal.Instant;
 
+  #updatedAt: Temporal.Instant;
+
+  constructor(data: SubscriptionData) {
     this.#userName = data.userName;
     this.#name = data.name;
     this.#uri = data.uri;
+
+    const timestamp = Temporal.Now.instant();
+
+    this.#createdAt = data.createdAt ?? timestamp;
+    this.#updatedAt = data.updatedAt ?? timestamp;
   }
 
   get userName(): string {
@@ -43,5 +53,21 @@ export class Subscription extends BaseModel {
 
   set uri(uri: string) {
     this.#uri = uri;
+  }
+
+  get createdAt(): Temporal.Instant {
+    return this.#createdAt;
+  }
+
+  set createdAt(createdAt: Temporal.Instant) {
+    this.#createdAt = createdAt;
+  }
+
+  get updatedAt(): Temporal.Instant {
+    return this.#updatedAt;
+  }
+
+  set updatedAt(updatedAt: Temporal.Instant) {
+    this.#updatedAt = updatedAt;
   }
 }
